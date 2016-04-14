@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.LoginController">
+    <children>
+        <ComboBox fx:id="txtBedrijfsFunctie" layoutX="226.0" layoutY="200.0" prefWidth="150.0" value="Manager">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Manager" />
+                    <String fx:value="Medewerker" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TextField fx:id="txtUsername" layoutX="226.0" layoutY="175.0" prefHeight="31.0" prefWidth="150.0" promptText="Username" />
+        <Button fx:id="login" layoutX="253.0" layoutY="260.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="96.0" text="Login" />
+        <Label layoutX="237.0" layoutY="107.0" prefHeight="51.0" prefWidth="126.0" text="Please, login">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
