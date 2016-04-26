@@ -20,10 +20,13 @@ public class PADKLM extends Application {
     
     LoginController loginController = new LoginController();
     
-    ArrayList <Cargo> cargoLijst = new ArrayList<Cargo>();
+    public void cargo(){
+    ArrayList cargoLijst = new ArrayList();
     Cargo cargo1 = new Cargo(4,"bloemen",20,20,20,"nee");
     
-    cargoLijst.add(cargo1());
+    cargoLijst.add(cargo1);
+    
+    }
     
     
     @Override 
