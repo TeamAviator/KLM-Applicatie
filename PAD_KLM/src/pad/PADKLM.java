@@ -1,6 +1,8 @@
 
 package pad;
 
+import java.util.*;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,10 +14,16 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Mark
+ * @author Jeroen
  */
 public class PADKLM extends Application {
+    
     LoginController loginController = new LoginController();
+    
+    ArrayList <Cargo> cargoLijst = new ArrayList<Cargo>();
+    Cargo cargo1 = new Cargo(4,"bloemen",20,20,20,"nee");
+    
+    cargoLijst.add(cargo1());
     
     
     @Override 

@@ -2,16 +2,23 @@ package pad;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -27,11 +34,48 @@ public class LoginController implements Initializable {
     DashboardManagerController dashboardManagerController = new DashboardManagerController();
     DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
 
+    
+    @FXML
+    private Label lblError;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    }
+    
+    private Boolean loginValidation(String username, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        Boolean valid = false;
+        try (Connection conn = Database.initDatabase()) {
+            //Select the employee with the given username and password
+            String selectEmployee
+                    = "SELECT id,userName,firstName,lastName,"
+                    + "password,email,admin,salt "
+                    + "FROM employee "
+                    + "WHERE userName = ?";
+
+            //Create prepared statment
+            PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
+
+            //set values
+            preparedStatement.setString(1, username);
+
+            //execute query and get results
+            ResultSet employee = preparedStatement.executeQuery();
+
+            //if there are no records found.
+            if (!employee.next()) {
+                lblError.setText("Username and/or password is wrong");
+                lblError.setVisible(true);
+            } 
+            
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return valid;
     }
 
     //Login controller koppelen aan het bijbehorende FXML bestand
