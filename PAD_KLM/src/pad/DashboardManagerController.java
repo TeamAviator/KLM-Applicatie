@@ -44,38 +44,11 @@ public class DashboardManagerController implements Initializable {
     //De nodige controllers worden opgehaald en een variabele meegegeven
     CargoLijstController cargoLijstController = new CargoLijstController();
 
-    @FXML
-    private TextField txtProduct;
-    @FXML
-    private TextField txtWeight;
-    @FXML
-    private TextField txtCargoNumber;
-    @FXML
-    private TextField txtVolume;
-    @FXML
-    private TextField txtKlantId;
-    @FXML
-    private TextField txtFoh;
-
-    private String product;
-    private String weight;
-    private String cargoNumber;
-    private String volume;
-    private String klantId;
-    private String foh;
-
+  
     @FXML
     private void cargo(ActionEvent event) throws IOException {
 
-        //variabele maken van FXML id 
-//        product = txtproduct.getText();
-//        weight = txtweight.getText();
-//        cargoNumber = txtcargoNumber.getText();
-//        volume = txtvolume.getText();
-//        klantId = txtklantId.getText();
-//        foh = txtfoh.getText();
-        
-        
+      
         AnchorPane cargoLijst = cargoLijstController.getCargoLijstController();
         Scene scene = new Scene(cargoLijst, 600, 400);
         Stage stage = new Stage();
