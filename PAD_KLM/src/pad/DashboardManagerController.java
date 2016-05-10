@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -25,10 +26,7 @@ public class DashboardManagerController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+    
     
     //Er wordt een koppeling gemaakt tussen de controller en bijbehorende FXML bestand
     public AnchorPane getDashboardManagerScreen() {
@@ -40,13 +38,22 @@ public class DashboardManagerController implements Initializable {
         }
         return screen;
     }
+    @FXML
+    private Label txtVoornaam;
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        txtVoornaam.setText(MITM.naam);
+    }
 
     //De nodige controllers worden opgehaald en een variabele meegegeven
     CargoLijstController cargoLijstController = new CargoLijstController();
-
+        
   
     @FXML
-    private void cargo(ActionEvent event) throws IOException {
+    public void cargo(ActionEvent event) throws IOException {
 
       
         AnchorPane cargoLijst = cargoLijstController.getCargoLijstController();
@@ -60,3 +67,11 @@ public class DashboardManagerController implements Initializable {
         
     }
 }
+
+// getString("ID");
+
+// ? gebruiken  
+// string naam = rs.getString("naam");
+// rs.setString(1,"naam"
+// select status from personeel where naam = ?
+// preparedstatement.setString(1,username),      username is i  deit geval een variable die je zelf hebt aangemaakt

@@ -50,19 +50,23 @@ public class LoginController implements Initializable {
         try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectEmployee
-                    = "SELECT id,userName,firstName,lastName,"
-                    + "password,email,admin,salt "
-                    + "FROM employee "
-                    + "WHERE userName = ?";
+                    = "SELECT gebruikersnaam"
+                    
+                    + "FROM personeel "
+                    + "WHERE status = ?";
 
             //Create prepared statment
+            
             PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
 
             //set values
             preparedStatement.setString(1, username);
-
+            
+            
             //execute query and get results
             ResultSet employee = preparedStatement.executeQuery();
+            
+            System.out.println(username);
 
             //if there are no records found.
             if (!employee.next()) {
@@ -77,7 +81,7 @@ public class LoginController implements Initializable {
 
         return valid;
     }
-
+    
     //Login controller koppelen aan het bijbehorende FXML bestand
     public AnchorPane getLoginScreen() {
         AnchorPane screen = null;
@@ -95,30 +99,92 @@ public class LoginController implements Initializable {
     private TextField txtUsername;
 
     private String username = "";
-    private String bedrijfsFunctie = "";
-
+    private String gebruikersnaam;
+    private String bedrijfsFunctie;
+    
     //action event  = button click. Als login geklikt, dan worden de onderstaande stappen uitgevoerd
     @FXML
     private void login(ActionEvent event) throws IOException {
         
         //variabele maken van FXML id 
-        bedrijfsFunctie = txtBedrijfsFunctie.getValue().toString();
         username = txtUsername.getText();
-
+        
         //checken of de ingevoerde gegevens gelezen wordt
+        
         System.out.println("Username: " + username);
         System.out.println("bedrijfsnfunctie: " + bedrijfsFunctie);
 
-        //Tijdelijke opslag plaats voor medewerkers, wordt vervangen door een database
-        String medewerker1 = "Marc";
-        String medewerker2 = "Mark";
-        String medewerker3 = "Nicky";
-        String manager1 = "Florian";
-        String manager2 = "Jeroen";
+        
+        
+        
+        
+//        try (Connection conn = Database.initDatabase()) {
+//            //Select the employee with the given username and password
+//            String selectEmployee
+//                    = "SELECT gebruikersnaam, status "
+//                    + "FROM personeel ";
+//                   // + "WHERE status = 'mg' ";
+//
+//            //Create prepared statment
+//            
+//            PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
+//
+//            //set values
+//           // preparedStatement.setString(1, gebruikersnaam);
+//            
+//            
+//            //execute query and get results
+//            ResultSet medewerker = preparedStatement.executeQuery();
+//            
+//            
+//
+//            //if there are no records found.
+//            if (medewerker.next()) {
+//                
+//             System.out.println(medewerker.getString("gebruikersnaam"));
+//             String naam = medewerker.getString("gebruikersnaam");
+//                
+//            } 
+//           
+//            conn.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        try (Connection conn = Database.initDatabase()) {
+            //Select the employee with the given username and password
+            String selectEmployee
+                    = "SELECT gebruikersnaam, status, voornaam "
+                    + "FROM personeel "
+                    + "WHERE gebruikersnaam = ? ";
+
+            //Create prepared statment
+            
+            PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
+
+            //set values
+            preparedStatement.setString(1, username);
+            
+            //execute query and get results
+            ResultSet medewerker = preparedStatement.executeQuery();
+
+            //if there are no records found.
+            if (medewerker.next()) {
+                System.out.println(medewerker.getString("status"));
+                bedrijfsFunctie = medewerker.getString("status");
+                MITM.naam = medewerker.getString("voornaam");
+            } 
+           
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
 
         //statement waarin wordt bepaald of de user een manager is
-        if (bedrijfsFunctie.equals("Manager")) {
-            if (username.equals(manager1) || username.equals(manager2)) {
+        if (bedrijfsFunctie.equals("mg")) {
+            
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het manager dashboard komen.
                 AnchorPane dashboardManager = dashboardManagerController.getDashboardManagerScreen();
@@ -129,10 +195,11 @@ public class LoginController implements Initializable {
                 stage.setTitle("KLM Cargo");
                 stage.setScene(scene);
                 stage.show();
-            }
+                
+                
             //statement waarin wordt bepaald of de user een medewerker is
-        } else if (bedrijfsFunctie.equals("Medewerker")) {
-            if (username.equalsIgnoreCase(medewerker1) || username.equals(medewerker2)|| username.equals(medewerker3) ) {
+        } else if (bedrijfsFunctie.equals("mw")) {
+            
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het medewerker dashboard komen.
                 AnchorPane dashboardMedewerker = dashboardMedewerkerController.getDashboardMedewerkerController();
@@ -143,7 +210,7 @@ public class LoginController implements Initializable {
                 stage.setTitle("KLM Cargo");
                 stage.setScene(scene);
                 stage.show();
-            }
+            
         }
     }
 

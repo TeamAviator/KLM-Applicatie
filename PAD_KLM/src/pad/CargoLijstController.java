@@ -6,9 +6,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -35,6 +40,24 @@ public class CargoLijstController implements Initializable {
         }
         return screen;
     }
+        
+        //De nodige controllers worden opgehaald en een variabele meegegeven
+    
+    
+//        @FXML
+//    private void back(ActionEvent event) throws IOException {
+//
+//      
+//        AnchorPane dashboardManager = dashboardManagerController.getDashboardManagerScreen();
+//        Scene scene = new Scene(dashboardManager, 600, 400);
+//        Stage stage = new Stage();
+//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//        stage.setTitle("KLM Cargo");
+//        stage.setScene(scene);
+//        stage.show();
+//        
+//    }
 
     
 }

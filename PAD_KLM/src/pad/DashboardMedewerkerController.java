@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,10 +26,7 @@ public class DashboardMedewerkerController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
     //Er wordt een koppeling gemaakt tussen de controller en bijbehorende FXML bestand     
     public AnchorPane getDashboardMedewerkerController() {
         AnchorPane screen = null;
@@ -40,6 +38,13 @@ public class DashboardMedewerkerController implements Initializable {
         return screen;
     }
     
+    @FXML
+    private Label txtVoornaam;
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        txtVoornaam.setText(MITM.naam);
+    }
      //De nodige controllers worden opgehaald en een variabele meegegeven
     CargoLijstController cargoLijstController = new CargoLijstController();
 

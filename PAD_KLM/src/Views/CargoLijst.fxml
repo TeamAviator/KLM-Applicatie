@@ -18,6 +18,7 @@
       <Label layoutX="15.0" layoutY="137.0" text="Volume" />
       <Label layoutX="10.0" layoutY="182.0" text="Klantnaam" />
       <Label layoutX="10.0" layoutY="223.0" text="bezorger" />
-      <Button fx:id="enter" layoutX="430.0" layoutY="306.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" text="Save" />
+      <Button fx:id="enter" layoutX="430.0" layoutY="306.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" text="Search" />
+      <Button fx:id="back" layoutX="103.0" layoutY="306.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="92.0" text="Back" />
    </children>
 </AnchorPane>
