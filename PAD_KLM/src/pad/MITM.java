@@ -5,6 +5,8 @@
  */
 package pad;
 
+
+
 /**
  *
  * @author florian_2
@@ -14,4 +16,7 @@ public class MITM {
         
     }
     public static String naam;
+    public static String autoriteit;
+    public static DashboardManagerController dashboardManagerController = new DashboardManagerController();
+    public static DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
 }

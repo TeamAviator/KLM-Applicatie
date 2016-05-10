@@ -21,7 +21,8 @@ import javafx.stage.Stage;
  * @author Jeroen
  */
 public class CargoLijstController implements Initializable {
-
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -44,20 +45,30 @@ public class CargoLijstController implements Initializable {
         //De nodige controllers worden opgehaald en een variabele meegegeven
     
     
-//        @FXML
-//    private void back(ActionEvent event) throws IOException {
-//
-//      
-//        AnchorPane dashboardManager = dashboardManagerController.getDashboardManagerScreen();
-//        Scene scene = new Scene(dashboardManager, 600, 400);
-//        Stage stage = new Stage();
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//
-//        stage.setTitle("KLM Cargo");
-//        stage.setScene(scene);
-//        stage.show();
-//        
-//    }
+        @FXML
+    private void back(ActionEvent event) throws IOException {
 
+      if(MITM.autoriteit == "mg"){
+        AnchorPane dashboardManager = MITM.dashboardManagerController.getDashboardManagerScreen();
+        Scene scene = new Scene(dashboardManager, 600, 400);
+        Stage stage = new Stage();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setTitle("KLM Cargo");
+        stage.setScene(scene);
+        stage.show();
+      }
+      else if(MITM.autoriteit == "mw"){
+        AnchorPane dashboardMedewerker = MITM.dashboardMedewerkerController.getDashboardMedewerkerController();
+        Scene scene = new Scene(dashboardMedewerker, 600, 400);
+        Stage stage = new Stage();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setTitle("KLM Cargo");
+        stage.setScene(scene);
+        stage.show();
+      }
+      
+    }
     
 }

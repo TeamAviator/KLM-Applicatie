@@ -184,7 +184,7 @@ public class LoginController implements Initializable {
 
         //statement waarin wordt bepaald of de user een manager is
         if (bedrijfsFunctie.equals("mg")) {
-            
+            MITM.autoriteit = "mg";
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het manager dashboard komen.
                 AnchorPane dashboardManager = dashboardManagerController.getDashboardManagerScreen();
@@ -199,7 +199,7 @@ public class LoginController implements Initializable {
                 
             //statement waarin wordt bepaald of de user een medewerker is
         } else if (bedrijfsFunctie.equals("mw")) {
-            
+            MITM.autoriteit = "mw";
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het medewerker dashboard komen.
                 AnchorPane dashboardMedewerker = dashboardMedewerkerController.getDashboardMedewerkerController();
