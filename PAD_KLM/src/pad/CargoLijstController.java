@@ -43,7 +43,7 @@ public class CargoLijstController implements Initializable {
     }
         
         //De nodige controllers worden opgehaald en een variabele meegegeven
-    
+
     
         @FXML
     private void back(ActionEvent event) throws IOException {

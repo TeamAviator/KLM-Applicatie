@@ -5,6 +5,14 @@
  */
 package pad;
 
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 /**
  *
  * @author florian_2
@@ -25,6 +33,9 @@ public class Cargo {
         this.klantId = klantId;
         this.foh = foh;
     }
+    
+    
+   
 
     
 }
