@@ -43,7 +43,7 @@ public class DashboardMedewerkerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        txtVoornaam.setText(MITM.naam);
+        txtVoornaam.setText(MITM.naam + " " + MITM.achternaam);
     }
      //De nodige controllers worden opgehaald en een variabele meegegeven
     CargoLijstController cargoLijstController = new CargoLijstController();

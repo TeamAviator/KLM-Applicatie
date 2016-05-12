@@ -21,6 +21,7 @@ public class MITM {
         
     }
     public static String naam;
+    public static String achternaam;
     public static String autoriteit;
     public static DashboardManagerController dashboardManagerController = new DashboardManagerController();
     public static DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();

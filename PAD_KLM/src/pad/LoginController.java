@@ -154,7 +154,7 @@ public class LoginController implements Initializable {
         try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectEmployee
-                    = "SELECT gebruikersnaam, status, voornaam "
+                    = "SELECT gebruikersnaam, status, voornaam, achternaam "
                     + "FROM personeel "
                     + "WHERE gebruikersnaam = ? ";
 
@@ -173,6 +173,7 @@ public class LoginController implements Initializable {
                 System.out.println(medewerker.getString("status"));
                 bedrijfsFunctie = medewerker.getString("status");
                 MITM.naam = medewerker.getString("voornaam");
+                MITM.achternaam = medewerker.getString("achternaam");
             } 
            
             conn.close();
