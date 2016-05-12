@@ -69,6 +69,20 @@ public class CargoLijstController implements Initializable {
         stage.show();
       }
       
+      
+      
     }
+    @FXML
+    
+   private void logout(ActionEvent event) throws IOException {
+        AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
+        Scene scene = new Scene(getLoginScreen, 600, 400);
+        Stage stage = new Stage();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setTitle("KLM Cargo");
+        stage.setScene(scene);
+        stage.show();
+   }
     
 }
