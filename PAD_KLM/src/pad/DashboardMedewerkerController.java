@@ -54,7 +54,7 @@ public class DashboardMedewerkerController implements Initializable {
 
       
         AnchorPane cargoLijst = cargoLijstController.getCargoLijstController();
-        Scene scene = new Scene(cargoLijst, 600, 400);
+        Scene scene = new Scene(cargoLijst, MITM.screenSizeX, MITM.screenSizeY);
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

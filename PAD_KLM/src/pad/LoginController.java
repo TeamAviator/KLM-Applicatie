@@ -188,7 +188,7 @@ public class LoginController implements Initializable {
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het manager dashboard komen.
                 AnchorPane dashboardManager = dashboardManagerController.getDashboardManagerScreen();
-                Scene scene = new Scene(dashboardManager, 600, 400);
+                Scene scene = new Scene(dashboardManager, MITM.screenSizeX, MITM.screenSizeY);
                 Stage stage = new Stage();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -203,7 +203,7 @@ public class LoginController implements Initializable {
 
                 //Als de if wordt uitgevoerd, en de ingevoerde waardes voldoen, moet het medewerker dashboard komen.
                 AnchorPane dashboardMedewerker = dashboardMedewerkerController.getDashboardMedewerkerController();
-                Scene scene = new Scene(dashboardMedewerker, 600, 400);
+                Scene scene = new Scene(dashboardMedewerker, MITM.screenSizeX, MITM.screenSizeY);
                 Stage stage = new Stage();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

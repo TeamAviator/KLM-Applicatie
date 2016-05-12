@@ -5,6 +5,11 @@
  */
 package pad;
 
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 
 
 /**
@@ -19,6 +24,9 @@ public class MITM {
     public static String autoriteit;
     public static DashboardManagerController dashboardManagerController = new DashboardManagerController();
     public static DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
+    public static CargoLijstController cargoLijstController = new CargoLijstController();
     public static int screenSizeX = 800;
     public static int screenSizeY = 600;
+    
+    
 }

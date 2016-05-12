@@ -50,7 +50,7 @@ public class CargoLijstController implements Initializable {
 
       if(MITM.autoriteit == "mg"){
         AnchorPane dashboardManager = MITM.dashboardManagerController.getDashboardManagerScreen();
-        Scene scene = new Scene(dashboardManager, 600, 400);
+        Scene scene = new Scene(dashboardManager, MITM.screenSizeX, MITM.screenSizeY);
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -60,7 +60,7 @@ public class CargoLijstController implements Initializable {
       }
       else if(MITM.autoriteit == "mw"){
         AnchorPane dashboardMedewerker = MITM.dashboardMedewerkerController.getDashboardMedewerkerController();
-        Scene scene = new Scene(dashboardMedewerker, 600, 400);
+        Scene scene = new Scene(dashboardMedewerker, MITM.screenSizeX, MITM.screenSizeY);
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
