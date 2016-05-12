@@ -19,4 +19,6 @@ public class MITM {
     public static String autoriteit;
     public static DashboardManagerController dashboardManagerController = new DashboardManagerController();
     public static DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
+    public static int screenSizeX = 800;
+    public static int screenSizeY = 600;
 }

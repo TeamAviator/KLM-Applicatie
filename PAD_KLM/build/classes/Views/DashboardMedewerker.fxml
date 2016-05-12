@@ -7,35 +7,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.DashboardManagerController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.DashboardManagerController">
    <children>
       <Button layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Home">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="cargo" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#cargo" prefHeight="58.0" prefWidth="125.0" text="Cargo">
+      <Button fx:id="cargo" layoutX="14.0" layoutY="195.0" mnemonicParsing="false" onAction="#cargo" prefHeight="58.0" prefWidth="125.0" text="Cargo">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="218.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Profile">
+      <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Profile">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="328.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Logout">
+      <Button layoutX="14.0" layoutY="522.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TableView layoutX="161.0" layoutY="104.0" prefHeight="283.0" prefWidth="416.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
-      <Label layoutX="480.0" layoutY="14.0" prefHeight="17.0" prefWidth="106.0" text="Medewerker" />
-      <Label fx:id="txtVoornaam" layoutX="480.0" layoutY="31.0" prefHeight="17.0" prefWidth="68.0" text="naam" />
+      <TableView layoutX="161.0" layoutY="104.0" prefHeight="476.0" prefWidth="618.0" />
+      <Label layoutX="636.0" layoutY="14.0" prefHeight="17.0" prefWidth="106.0" text="Medewerker" />
+      <Label fx:id="txtVoornaam" layoutX="636.0" layoutY="45.0" prefHeight="21.0" prefWidth="106.0" text="naam" />
    </children>
 </AnchorPane>
