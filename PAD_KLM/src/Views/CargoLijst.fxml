@@ -15,7 +15,6 @@
       <Label layoutX="426.0" layoutY="136.0" text="Klantnaam" />
       <Label layoutX="432.0" layoutY="195.0" text="bezorger" />
       <Button fx:id="enter" layoutX="487.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" text="Search" />
-      <Button fx:id="back" layoutX="380.0" layoutY="456.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="92.0" text="Back" />
       <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout">
          <font>
             <Font size="20.0" />
@@ -31,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Home">
+      <Button fx:id="Home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="125.0" text="Home">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

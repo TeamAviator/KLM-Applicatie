@@ -46,7 +46,7 @@ public class CargoLijstController implements Initializable {
 
     
         @FXML
-    private void back(ActionEvent event) throws IOException {
+    private void home(ActionEvent event) throws IOException {
 
       if(MITM.autoriteit == "mg"){
         AnchorPane dashboardManager = MITM.dashboardManagerController.getDashboardManagerScreen();
