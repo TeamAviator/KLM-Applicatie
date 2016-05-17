@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,12 +10,12 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.CargoLijstController">
    <children>
-      <Label layoutX="395.0" layoutY="62.0" text="Cargonumber" />
-      <Label layoutX="414.0" layoutY="97.0" prefHeight="21.0" prefWidth="73.0" text="Product" />
-      <Label layoutX="400.0" layoutY="24.0" text="Volume" />
-      <Label layoutX="426.0" layoutY="136.0" text="Klantnaam" />
-      <Label layoutX="432.0" layoutY="195.0" text="bezorger" />
-      <Button fx:id="enter" layoutX="487.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" text="Search" />
+      <Label layoutX="223.0" layoutY="102.0" text="Cargonumber:" />
+      <Label layoutX="262.0" layoutY="150.0" prefHeight="21.0" prefWidth="60.0" text="Product:" />
+      <Label layoutX="264.0" layoutY="195.0" text="Volume:" />
+      <Label layoutX="242.0" layoutY="290.0" text="Klantnaam:" />
+      <Label layoutX="248.0" layoutY="357.0" text="Bezorger:" />
+      <Button fx:id="Zoeken" layoutX="694.0" layoutY="536.0" mnemonicParsing="false" onAction="#zoeken" prefHeight="31.0" prefWidth="92.0" text="Search" />
       <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout">
          <font>
             <Font size="20.0" />
@@ -35,5 +36,17 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <Label layoutX="250.0" layoutY="403.0" prefHeight="21.0" prefWidth="60.0" text="Gekoeld:" />
+      <Label layoutX="171.0" layoutY="450.0" prefHeight="21.0" prefWidth="142.0" text="Aankomst datum/tijd:" />
+      <Label fx:id="DatumTijd" layoutX="349.0" layoutY="450.0" prefHeight="21.0" prefWidth="187.0" text="aankomst datum/tijd" />
+      <Label fx:id="Gekoeld" layoutX="349.0" layoutY="403.0" prefHeight="21.0" prefWidth="187.0" text="gekoeld" />
+      <Label fx:id="Bezorger" layoutX="349.0" layoutY="357.0" prefHeight="21.0" prefWidth="187.0" text="bezorger" />
+      <Label fx:id="Klantnaam" layoutX="349.0" layoutY="290.0" prefHeight="21.0" prefWidth="187.0" text="Klantnaam" />
+      <Label fx:id="Volume" layoutX="349.0" layoutY="195.0" prefHeight="21.0" prefWidth="187.0" text="Volume" />
+      <Label fx:id="Product" layoutX="349.0" layoutY="150.0" prefHeight="21.0" prefWidth="187.0" text="Product" />
+      <TextField fx:id="txtCargoNummer" layoutX="349.0" layoutY="97.0" />
+      <Label layoutX="255.0" layoutY="232.0" prefHeight="21.0" prefWidth="60.0" text="Gewicht:" />
+      <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="187.0" text="gewicht" />
+      <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" />
    </children>
 </AnchorPane>

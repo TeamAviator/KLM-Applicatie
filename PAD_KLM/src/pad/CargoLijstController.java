@@ -3,6 +3,10 @@ package pad;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -22,17 +28,54 @@ import javafx.stage.Stage;
  */
 public class CargoLijstController implements Initializable {
     
-    
+    @FXML
+   private TextField txtCargoNummer;
+   @FXML
+   private Label Volume;
+   @FXML
+   private Label Gewicht;
+   @FXML
+   private Label Product;
+   @FXML
+   private Label Klantnaam;
+   @FXML
+   private Label Bezorger;
+   @FXML
+   private Label Gekoeld;
+   @FXML
+   private Label DatumTijd;
+   
+   private int vrachtID;
+   private int klantID;
+   private String product;
+   private String klantnaam;
+   private String voornaam;
+   private String tussenvoegsel;
+   private String achternaam;
+   private int gewicht;
+   private int volume;
+   private String gekoeld;
+   private String datumTijd;
+   private String bezorger;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Volume.setText("");
+        Gewicht.setText("");
+        Product.setText("");
+        Klantnaam.setText("");
+        Bezorger.setText("");
+        Gekoeld.setText("");
+        DatumTijd.setText("");
+        
     }    
     
         //Er wordt een koppeling gemaakt tussen de controller en bijbehorende FXML bestand
-        public AnchorPane getCargoLijstController() {
+    public AnchorPane getCargoLijstController() {
         AnchorPane screen = null;
         try {
             screen = FXMLLoader.load(getClass().getResource("/Views/CargoLijst.fxml"));
@@ -84,5 +127,117 @@ public class CargoLijstController implements Initializable {
         stage.setScene(scene);
         stage.show();
    }
+   
+   
+   
+   @FXML
+   private void zoeken(ActionEvent event) throws IOException {
+       
+        Volume.setText("");
+        Gewicht.setText("");
+        Product.setText("");
+        Klantnaam.setText("");
+        Bezorger.setText("");
+        Gekoeld.setText("");
+        DatumTijd.setText("");
+       
+       vrachtID = Integer.parseInt(txtCargoNummer.getText());
+       
+       if(vrachtID != 0){
+           
+       System.out.println(vrachtID);
+       try (Connection conn = Database.initDatabase()) {
+            //Select the employee with the given username and password
+            String selectVracht
+                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger "
+                    + "FROM vracht "
+                    + "WHERE vracht_id = ? ";
+
+            String selectKlant
+                    = "SELECT voornaam, tussenvoegsel, achternaam "
+                    + "FROM klant "
+                    + "WHERE klant_id = ?";
+
+            //Create prepared statment
+            PreparedStatement preparedStatement1 = conn.prepareStatement(selectVracht);
+
+            //set values
+            preparedStatement1.setInt(1, vrachtID);
+            
+            //execute query and get results
+            ResultSet vracht = preparedStatement1.executeQuery();
+
+            //if there are records found.
+            if (vracht.next()) {
+                
+                klantID = vracht.getInt("klant_klant_id");
+                
+                product = vracht.getString("product");
+                
+                gewicht = vracht.getInt("gewicht");
+                
+                volume = vracht.getInt("volume");
+                
+                gekoeld = vracht.getString("gekoeld");
+                
+                datumTijd = vracht.getString("datum_tijd");
+                
+                bezorger = vracht.getString("bezorger");
+                
+                System.out.println(product +" "+ gewicht +" "+ volume +" "+ gekoeld +" "+ datumTijd +" "+ bezorger);
+  
+            } else if( !vracht.next() ){ System.out.println("Vracht-ID bestaat niet!!!");  conn.close();   }
+            
+            //Create prepared statment
+            PreparedStatement preparedStatement2 = conn.prepareStatement(selectKlant);
+            //set values
+            preparedStatement2.setInt(1, klantID);
+            //execute query and get results
+            ResultSet klant = preparedStatement2.executeQuery();
+            //if there are records found.
+            if(klant.next()){
+                voornaam = klant.getString("voornaam");
+                tussenvoegsel = klant.getString("tussenvoegsel");
+                achternaam = klant.getString("achternaam");
+                
+                if(tussenvoegsel == null){tussenvoegsel = ""; }
+                
+                klantnaam = voornaam +" "+ tussenvoegsel +" "+ achternaam;
+            }
+            
+            
+            Product.setText(product);
+            Gewicht.setText(String.valueOf(gewicht)+ " KG");
+            Volume.setText(String.valueOf(volume)+ " m3");
+            Gekoeld.setText(gekoeld);
+            DatumTijd.setText(datumTijd);
+            Bezorger.setText(bezorger);
+            Klantnaam.setText(klantnaam);
+            
+           
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      }
+   }
+    @FXML
+   private void foh(ActionEvent event) throws IOException {
+        if(vrachtID != 0){
+            System.out.println("Beste "+ klantnaam +",\n" +
+                               "Uw vracht is zojuist geariveerd om "+datumTijd+" in de KLM cargo loods. Aangeleverd door "+bezorger+"\n" +
+                               "De volgende gegevens zijn bij ons bekent:\n" +
+                               "Product: "+product+"\n" +
+                               "Gewicht: "+gewicht+" KG\n" +
+                               "Volume: "+volume+" m3\n" +
+                               "Gekoeld: "+gekoeld+"\n" +
+                               "\n" +
+                               "Nadat de vracht verder geïnspecteerd is zullen wij uw een melding hierover mededelen.\n" +
+                               "\n" +
+                               "Met vriendelijke groet,\n" +
+                               "KLM Cargo");
+        }
+   
+   } 
     
 }
