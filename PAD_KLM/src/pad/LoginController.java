@@ -37,12 +37,15 @@ public class LoginController implements Initializable {
     
     @FXML
     private Label lblError;
+    @FXML
+    private Label errorID;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        errorID.setVisible(false);
     }
     
     private Boolean loginValidation(String username, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -174,12 +177,14 @@ public class LoginController implements Initializable {
                 bedrijfsFunctie = medewerker.getString("status");
                 MITM.naam = medewerker.getString("voornaam");
                 MITM.achternaam = medewerker.getString("achternaam");
-            } 
+            } else if(!medewerker.next()){
+                errorID.setVisible(true);
+            }
            
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
         
         
 

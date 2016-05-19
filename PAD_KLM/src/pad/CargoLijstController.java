@@ -51,6 +51,8 @@ public class CargoLijstController implements Initializable {
    private Circle fohID;
    @FXML 
    private Circle rfcID;
+   @FXML
+   private Label errorCargoID;
    
    
    private int vrachtID;
@@ -83,6 +85,7 @@ public class CargoLijstController implements Initializable {
         DatumTijd.setText("");
         fohID.setVisible(false);
         rfcID.setVisible(false);
+        errorCargoID.setVisible(false);
         
         
     }    
@@ -156,9 +159,15 @@ public class CargoLijstController implements Initializable {
         
         
        
-       vrachtID = Integer.parseInt(txtCargoNummer.getText());
+      
+       
+       if(txtCargoNummer.getText() == null || txtCargoNummer.getText().trim().isEmpty()){
+           vrachtID = 0;
+       }else{ vrachtID = Integer.parseInt(txtCargoNummer.getText());}
        
        if(vrachtID != 0){
+           
+           
            
        System.out.println(vrachtID);
        try (Connection conn = Database.initDatabase()) {
@@ -184,6 +193,7 @@ public class CargoLijstController implements Initializable {
 
             //if there are records found.
             if (vracht.next()) {
+                errorCargoID.setVisible(false);
                 
                 klantID = vracht.getInt("klant_klant_id");
                 
@@ -205,7 +215,11 @@ public class CargoLijstController implements Initializable {
                 
                 System.out.println(product +" "+ gewicht +" "+ volume +" "+ gekoeld +" "+ datumTijd +" "+ bezorger);
   
-            } else if( !vracht.next() ){ System.out.println("Vracht-ID bestaat niet!!!");  conn.close();   }
+            } else if( !vracht.next() ){ 
+                errorCargoID.setText("CargoNumber doesn't exist!");
+                errorCargoID.setVisible(true);
+                conn.close();   
+            }
             
             //Create prepared statment
             PreparedStatement preparedStatement2 = conn.prepareStatement(selectKlant);
@@ -260,7 +274,7 @@ public class CargoLijstController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(CargoLijstController.class.getName()).log(Level.SEVERE, null, ex);
         }
-      }
+      } else {errorCargoID.setVisible(true); errorCargoID.setText("Enter a Cargonumber please!"); }
    }
     @FXML
    private void foh(ActionEvent event) throws IOException {
