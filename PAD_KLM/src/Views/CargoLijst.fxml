@@ -37,7 +37,7 @@
          </font>
       </Button>
       <Label layoutX="250.0" layoutY="403.0" prefHeight="21.0" prefWidth="60.0" text="Gekoeld:" />
-      <Label layoutX="171.0" layoutY="450.0" prefHeight="21.0" prefWidth="142.0" text="Aankomst datum/tijd:" />
+      <Label layoutX="193.0" layoutY="450.0" prefHeight="21.0" prefWidth="115.0" text="Aangekomen op:" />
       <Label fx:id="DatumTijd" layoutX="349.0" layoutY="450.0" prefHeight="21.0" prefWidth="187.0" text="aankomst datum/tijd" />
       <Label fx:id="Gekoeld" layoutX="349.0" layoutY="403.0" prefHeight="21.0" prefWidth="187.0" text="gekoeld" />
       <Label fx:id="Bezorger" layoutX="349.0" layoutY="357.0" prefHeight="21.0" prefWidth="187.0" text="bezorger" />
@@ -48,5 +48,9 @@
       <Label layoutX="255.0" layoutY="232.0" prefHeight="21.0" prefWidth="60.0" text="Gewicht:" />
       <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="187.0" text="gewicht" />
       <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" />
+      <Label layoutX="274.0" layoutY="482.0" prefHeight="21.0" prefWidth="35.0" text="FoH:" />
+      <Circle fill="DODGERBLUE" layoutX="400.0" layoutY="493.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="400.0" layoutY="536.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="274.0" layoutY="526.0" prefHeight="21.0" prefWidth="35.0" text="RFC:" />
    </children>
 </AnchorPane>
