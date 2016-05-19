@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -49,8 +50,8 @@
       <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="187.0" text="gewicht" />
       <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" />
       <Label layoutX="274.0" layoutY="482.0" prefHeight="21.0" prefWidth="35.0" text="FoH:" />
-      <Circle fill="DODGERBLUE" layoutX="400.0" layoutY="493.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="400.0" layoutY="536.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="fohID" fill="RED" layoutX="400.0" layoutY="493.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="rfcID" fill="RED" layoutX="400.0" layoutY="536.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="274.0" layoutY="526.0" prefHeight="21.0" prefWidth="35.0" text="RFC:" />
    </children>
 </AnchorPane>

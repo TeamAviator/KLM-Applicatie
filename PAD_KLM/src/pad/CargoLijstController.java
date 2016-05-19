@@ -18,7 +18,10 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Circle;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
 import javafx.stage.Stage;
 
 /**
@@ -44,6 +47,11 @@ public class CargoLijstController implements Initializable {
    private Label Gekoeld;
    @FXML
    private Label DatumTijd;
+   @FXML 
+   private Circle fohID;
+   @FXML 
+   private Circle rfcID;
+   
    
    private int vrachtID;
    private int klantID;
@@ -57,6 +65,8 @@ public class CargoLijstController implements Initializable {
    private String gekoeld;
    private String datumTijd;
    private String bezorger;
+   private String FoH;
+   private String RFC;
     /**
      * Initializes the controller class.
      * @param url
@@ -71,6 +81,9 @@ public class CargoLijstController implements Initializable {
         Bezorger.setText("");
         Gekoeld.setText("");
         DatumTijd.setText("");
+        fohID.setVisible(false);
+        rfcID.setVisible(false);
+        
         
     }    
     
@@ -140,6 +153,8 @@ public class CargoLijstController implements Initializable {
         Bezorger.setText("");
         Gekoeld.setText("");
         DatumTijd.setText("");
+        
+        
        
        vrachtID = Integer.parseInt(txtCargoNummer.getText());
        
@@ -149,7 +164,7 @@ public class CargoLijstController implements Initializable {
        try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectVracht
-                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger "
+                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger, foh, rfc "
                     + "FROM vracht "
                     + "WHERE vracht_id = ? ";
 
@@ -184,6 +199,10 @@ public class CargoLijstController implements Initializable {
                 
                 bezorger = vracht.getString("bezorger");
                 
+                FoH = vracht.getString("foh");
+                
+                RFC = vracht.getString("rfc");
+                
                 System.out.println(product +" "+ gewicht +" "+ volume +" "+ gekoeld +" "+ datumTijd +" "+ bezorger);
   
             } else if( !vracht.next() ){ System.out.println("Vracht-ID bestaat niet!!!");  conn.close();   }
@@ -205,6 +224,28 @@ public class CargoLijstController implements Initializable {
                 klantnaam = voornaam +" "+ tussenvoegsel +" "+ achternaam;
             }
             
+            System.out.println(FoH);
+           switch (FoH) {
+               case "nee":
+                   fohID.setFill(Color.RED);
+                   fohID.setVisible(true);
+                   break;
+               case "ja":
+                   fohID.setFill(Color.GREEN);
+                   fohID.setVisible(true);
+                   break;
+           }
+            
+           switch (RFC) {
+               case "nee":
+                   rfcID.setFill(Color.RED);
+                   rfcID.setVisible(true);
+                   break;
+               case "ja":
+                   rfcID.setFill(Color.GREEN);
+                   rfcID.setVisible(true);
+                   break;
+           }
             
             Product.setText(product);
             Gewicht.setText(String.valueOf(gewicht)+ " KG");
@@ -217,7 +258,7 @@ public class CargoLijstController implements Initializable {
            
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargoLijstController.class.getName()).log(Level.SEVERE, null, ex);
         }
       }
    }
@@ -236,6 +277,35 @@ public class CargoLijstController implements Initializable {
                                "\n" +
                                "Met vriendelijke groet,\n" +
                                "KLM Cargo");
+        }
+        
+        try (Connection conn = Database.initDatabase()) {
+            
+            conn.setAutoCommit(false);
+            //Select the employee with the given username and password
+            String setFOH
+                    = "UPDATE vracht "
+                    + "SET foh = 'ja' "
+                    + "WHERE vracht_id = ? ";
+
+            //Create prepared statment
+            
+            PreparedStatement setFoH = conn.prepareStatement(setFOH);
+
+            //set values
+            setFoH.setInt(1, vrachtID);
+           
+            //execute update
+             setFoH.executeUpdate();
+             conn.commit();
+            //if there are no records found.
+            System.out.println(FoH);
+            
+           
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CargoLijstController.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
    
    } 
