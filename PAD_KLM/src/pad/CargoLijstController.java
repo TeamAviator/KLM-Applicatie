@@ -53,6 +53,18 @@ public class CargoLijstController implements Initializable {
    private Circle rfcID;
    @FXML
    private Label errorCargoID;
+   @FXML
+   private Label VolumeMeet;
+   @FXML
+   private Label GewichtMeet;
+   @FXML
+   private Label Beschadigd;          
+   @FXML
+   private Label DatumTijdMeet;
+   @FXML
+   private Label ExceedVolume;
+   @FXML
+   private Label ExceedGewicht;
    
    
    private int vrachtID;
@@ -69,6 +81,13 @@ public class CargoLijstController implements Initializable {
    private String bezorger;
    private String FoH;
    private String RFC;
+   private int volumeMeet;
+   private int gewichtMeet;
+   private String beschadigd;
+   private String datumTijdMeet;
+   private String exceedVolume;
+   private String exceedGewicht;
+   
     /**
      * Initializes the controller class.
      * @param url
@@ -86,7 +105,15 @@ public class CargoLijstController implements Initializable {
         fohID.setVisible(false);
         rfcID.setVisible(false);
         errorCargoID.setVisible(false);
+        VolumeMeet.setText("");
+        GewichtMeet.setText("");
+        Beschadigd.setText("");
+        DatumTijdMeet.setText("");
         
+        ExceedVolume.setVisible(false);
+        ExceedGewicht.setVisible(false);
+        ExceedVolume.setText("");
+        ExceedGewicht.setText("");
         
     }    
     
@@ -157,19 +184,24 @@ public class CargoLijstController implements Initializable {
         Gekoeld.setText("");
         DatumTijd.setText("");
         
+        VolumeMeet.setText("");
+        GewichtMeet.setText("");
+        Beschadigd.setText("");
+        DatumTijdMeet.setText("");
         
-       
+        ExceedVolume.setVisible(false);
+        ExceedGewicht.setVisible(false);
+        ExceedVolume.setText("");
+        ExceedGewicht.setText("");
       
-       
+        fohID.setVisible(false);
+        rfcID.setVisible(false);
+        
        if(txtCargoNummer.getText() == null || txtCargoNummer.getText().trim().isEmpty()){
            vrachtID = 0;
        }else{ vrachtID = Integer.parseInt(txtCargoNummer.getText());}
        
        if(vrachtID != 0){
-           
-           
-           
-       System.out.println(vrachtID);
        try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectVracht
@@ -182,6 +214,11 @@ public class CargoLijstController implements Initializable {
                     + "FROM klant "
                     + "WHERE klant_id = ?";
 
+            String selectMeetgegevens
+                    = "SELECT vracht_id, gewicht, volume, datum_tijd, beschadigd "
+                    + "FROM meetgegevens "
+                    + "WHERE vracht_id = ?";
+            
             //Create prepared statment
             PreparedStatement preparedStatement1 = conn.prepareStatement(selectVracht);
 
@@ -213,8 +250,7 @@ public class CargoLijstController implements Initializable {
                 
                 RFC = vracht.getString("rfc");
                 
-                System.out.println(product +" "+ gewicht +" "+ volume +" "+ gekoeld +" "+ datumTijd +" "+ bezorger);
-  
+                
             } else if( !vracht.next() ){ 
                 errorCargoID.setText("CargoNumber doesn't exist!");
                 errorCargoID.setVisible(true);
@@ -237,9 +273,24 @@ public class CargoLijstController implements Initializable {
                 
                 klantnaam = voornaam +" "+ tussenvoegsel +" "+ achternaam;
             }
+           
             
-            System.out.println(FoH);
-           switch (FoH) {
+            //Create prepared statment
+            PreparedStatement preparedStatement3 = conn.prepareStatement(selectMeetgegevens);
+            //set values
+            preparedStatement3.setInt(1, vrachtID);
+            //execute query and get results
+            ResultSet meetgegevens = preparedStatement3.executeQuery();
+            //if there are records found.
+            if(meetgegevens.next()){
+                volumeMeet = meetgegevens.getInt("volume");
+                gewichtMeet = meetgegevens.getInt("gewicht");
+                datumTijdMeet = meetgegevens.getString("datum_tijd");
+                beschadigd = meetgegevens.getString("beschadigd");
+            } 
+           
+            
+            switch (FoH) {
                case "nee":
                    fohID.setFill(Color.RED);
                    fohID.setVisible(true);
@@ -259,7 +310,50 @@ public class CargoLijstController implements Initializable {
                    rfcID.setFill(Color.GREEN);
                    rfcID.setVisible(true);
                    break;
+                case "mis":
+                   rfcID.setFill(Color.YELLOW);
+                   rfcID.setVisible(true);
+                   break;
            }
+           
+           boolean RFC = true;
+           double exceedVolumePercentage = ((double)volumeMeet/(double)volume) * 100;
+           int exceedVolumeRound = (int)exceedVolumePercentage;
+            if (exceedVolumePercentage > 120 || exceedVolumePercentage < 80 ){
+           rfcID.setFill(Color.YELLOW);
+            ExceedVolume.setVisible(true);
+            ExceedVolume.setText("Exceeds by " + exceedVolumeRound + "%");
+            RFC = false;
+           }
+
+           double exceedGewichtPercentage = ((double)gewichtMeet/(double)gewicht) * 100;
+           int exceedGewichtRound = (int)exceedGewichtPercentage;
+            if (exceedGewichtPercentage > 120 || exceedGewichtPercentage < 80 ){
+           rfcID.setFill(Color.YELLOW);
+            ExceedGewicht.setVisible(true);
+            ExceedGewicht.setText("Exceeds by " + exceedGewichtRound + "%");
+            RFC = false;
+           }
+            
+           if (!RFC) {
+            conn.setAutoCommit(false);
+            String setRFC
+                    = "UPDATE vracht "
+                    + "SET rfc = 'mis' "
+                    + "WHERE vracht_id = ? ";
+
+            //Create prepared statment
+            
+            PreparedStatement setRfc = conn.prepareStatement(setRFC);
+
+            //set values
+            setRfc.setInt(1, vrachtID);
+           
+            //execute update
+             setRfc.executeUpdate();
+             conn.commit();
+           }
+            
             
             Product.setText(product);
             Gewicht.setText(String.valueOf(gewicht)+ " KG");
@@ -268,6 +362,11 @@ public class CargoLijstController implements Initializable {
             DatumTijd.setText(datumTijd);
             Bezorger.setText(bezorger);
             Klantnaam.setText(klantnaam);
+            
+            DatumTijdMeet.setText(datumTijdMeet);
+            GewichtMeet.setText(String.valueOf(gewichtMeet)+ " KG");
+            VolumeMeet.setText(String.valueOf(volumeMeet)+ " m3");
+            Beschadigd.setText(beschadigd);
             
            
             conn.close();
