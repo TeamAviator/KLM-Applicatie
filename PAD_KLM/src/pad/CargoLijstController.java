@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  */
 public class CargoLijstController implements Initializable {
     
-    @FXML
+   @FXML
    private TextField txtCargoNummer;
    @FXML
    private Label Volume;

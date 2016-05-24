@@ -27,8 +27,15 @@ public class MITM {
     public static DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
     public static CargoLijstController cargoLijstController = new CargoLijstController();
     public static LoginController loginController = new LoginController();
+    public static MeetgegevensController meetgegevensController = new MeetgegevensController();
     public static int screenSizeX = 800;
     public static int screenSizeY = 600;
+    //public static AnchorPane screen2;
+    
+    
+    
+    
+    
     
     
 }

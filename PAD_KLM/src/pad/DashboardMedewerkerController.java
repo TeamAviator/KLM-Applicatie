@@ -30,6 +30,7 @@ public class DashboardMedewerkerController implements Initializable {
     //Er wordt een koppeling gemaakt tussen de controller en bijbehorende FXML bestand     
     public AnchorPane getDashboardMedewerkerController() {
         AnchorPane screen = null;
+        AnchorPane EnterCargo = null;
         try {
             screen = FXMLLoader.load(getClass().getResource("/Views/DashboardMedewerker.fxml"));
         } catch (IOException ex) {
@@ -50,7 +51,7 @@ public class DashboardMedewerkerController implements Initializable {
 
   
     @FXML
-    private void cargo(ActionEvent event) throws IOException {
+    public void cargo(ActionEvent event) throws IOException {
 
       
         AnchorPane cargoLijst = cargoLijstController.getCargoLijstController();
@@ -61,20 +62,36 @@ public class DashboardMedewerkerController implements Initializable {
         stage.setTitle("KLM Cargo");
         stage.setScene(scene);
         stage.show();
+        getMeetgegevens();
         
     }
+    public void getMeetgegevens() {
+        //screen2 = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/Meetgegevens.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("KLM cargo");
+            stage.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MeetgegevensController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
     
        @FXML
     
-   private void logout(ActionEvent event) throws IOException {
-        AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
-        Scene scene = new Scene(getLoginScreen, 600, 400);
-        Stage stage = new Stage();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    private void logout(ActionEvent event) throws IOException {
+         AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
+         Scene scene = new Scene(getLoginScreen, 600, 400);
+         Stage stage = new Stage();
+         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        stage.setTitle("KLM Cargo");
-        stage.setScene(scene);
-        stage.show();
-   }
+         stage.setTitle("KLM Cargo");
+         stage.setScene(scene);
+         stage.show();
+    }
     
 }

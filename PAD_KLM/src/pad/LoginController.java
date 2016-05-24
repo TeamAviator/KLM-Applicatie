@@ -35,8 +35,7 @@ public class LoginController implements Initializable {
     DashboardMedewerkerController dashboardMedewerkerController = new DashboardMedewerkerController();
 
     
-    @FXML
-    private Label lblError;
+    
     @FXML
     private Label errorID;
     
@@ -48,42 +47,7 @@ public class LoginController implements Initializable {
         errorID.setVisible(false);
     }
     
-    private Boolean loginValidation(String username, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        Boolean valid = false;
-        try (Connection conn = Database.initDatabase()) {
-            //Select the employee with the given username and password
-            String selectEmployee
-                    = "SELECT gebruikersnaam"
-                    
-                    + "FROM personeel "
-                    + "WHERE status = ?";
-
-            //Create prepared statment
-            
-            PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
-
-            //set values
-            preparedStatement.setString(1, username);
-            
-            
-            //execute query and get results
-            ResultSet employee = preparedStatement.executeQuery();
-            
-            System.out.println(username);
-
-            //if there are no records found.
-            if (!employee.next()) {
-                lblError.setText("Username and/or password is wrong");
-                lblError.setVisible(true);
-            } 
-            
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return valid;
-    }
+    
     
     //Login controller koppelen aan het bijbehorende FXML bestand
     public AnchorPane getLoginScreen() {
@@ -114,45 +78,7 @@ public class LoginController implements Initializable {
         
         //checken of de ingevoerde gegevens gelezen wordt
         
-        System.out.println("Username: " + username);
-        System.out.println("bedrijfsnfunctie: " + bedrijfsFunctie);
-
         
-        
-        
-        
-//        try (Connection conn = Database.initDatabase()) {
-//            //Select the employee with the given username and password
-//            String selectEmployee
-//                    = "SELECT gebruikersnaam, status "
-//                    + "FROM personeel ";
-//                   // + "WHERE status = 'mg' ";
-//
-//            //Create prepared statment
-//            
-//            PreparedStatement preparedStatement = conn.prepareStatement(selectEmployee);
-//
-//            //set values
-//           // preparedStatement.setString(1, gebruikersnaam);
-//            
-//            
-//            //execute query and get results
-//            ResultSet medewerker = preparedStatement.executeQuery();
-//            
-//            
-//
-//            //if there are no records found.
-//            if (medewerker.next()) {
-//                
-//             System.out.println(medewerker.getString("gebruikersnaam"));
-//             String naam = medewerker.getString("gebruikersnaam");
-//                
-//            } 
-//           
-//            conn.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         
         try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password

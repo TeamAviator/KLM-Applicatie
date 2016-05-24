@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -65,6 +66,17 @@ public class DashboardManagerController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
+        getMeetgegevens();
+//        AnchorPane meetgegevens = MITM.meetgegevensController.getMeetgegevens();
+//        Scene scene2 = new Scene(meetgegevens, MITM.screenSizeX, MITM.screenSizeY);
+//        Stage stage2 = new Stage();
+//        stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//
+//        stage2.setTitle("KLM Cargo");
+//        stage2.setScene(scene2);
+//        stage2.show();
+        
+        
     }
        @FXML
     
@@ -78,6 +90,20 @@ public class DashboardManagerController implements Initializable {
         stage.setScene(scene);
         stage.show();
    }
+    public void getMeetgegevens() {
+        //screen2 = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/Meetgegevens.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("KLM cargo");
+            stage.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MeetgegevensController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
 }
 
 // getString("ID");
