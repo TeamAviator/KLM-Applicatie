@@ -97,7 +97,7 @@ public class DashboardManagerController implements Initializable {
             AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/Meetgegevens.fxml"));
             Stage stage = new Stage();
             stage.setTitle("KLM cargo");
-            stage.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
+            stage.setScene(new Scene(screen2,482 , 558));
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(MeetgegevensController.class.getName()).log(Level.SEVERE, null, ex);

@@ -87,6 +87,7 @@ public class CargoLijstController implements Initializable {
    private String datumTijdMeet;
    private String exceedVolume;
    private String exceedGewicht;
+   private String rfc_bericht;
    
     /**
      * Initializes the controller class.
@@ -114,6 +115,8 @@ public class CargoLijstController implements Initializable {
         ExceedGewicht.setVisible(false);
         ExceedVolume.setText("");
         ExceedGewicht.setText("");
+        rfc_bericht = "";
+        
         
     }    
     
@@ -197,6 +200,8 @@ public class CargoLijstController implements Initializable {
         fohID.setVisible(false);
         rfcID.setVisible(false);
         
+        rfc_bericht = "";
+        
        if(txtCargoNummer.getText() == null || txtCargoNummer.getText().trim().isEmpty()){
            vrachtID = 0;
        }else{ vrachtID = Integer.parseInt(txtCargoNummer.getText());}
@@ -205,7 +210,7 @@ public class CargoLijstController implements Initializable {
        try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectVracht
-                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger, foh, rfc "
+                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger, foh, rfc, rfc_bericht "
                     + "FROM vracht "
                     + "WHERE vracht_id = ? ";
 
@@ -250,6 +255,7 @@ public class CargoLijstController implements Initializable {
                 
                 RFC = vracht.getString("rfc");
                 
+                rfc_bericht = vracht.getString("rfc_bericht");
                 
             } else if( !vracht.next() ){ 
                 errorCargoID.setText("CargoNumber doesn't exist!");
@@ -307,35 +313,44 @@ public class CargoLijstController implements Initializable {
                    rfcID.setVisible(true);
                    break;
                case "ja":
+                   if ("ja".equals(FoH)){
                    rfcID.setFill(Color.GREEN);
                    rfcID.setVisible(true);
+                   } else {
+                   rfcID.setFill(Color.RED);
+                   }
                    break;
                 case "mis":
                    rfcID.setFill(Color.YELLOW);
                    rfcID.setVisible(true);
                    break;
            }
+                      
+
+                   
            
-           boolean RFC = true;
+           boolean rfcStatus = true;
            double exceedVolumePercentage = ((double)volumeMeet/(double)volume) * 100;
-           int exceedVolumeRound = (int)exceedVolumePercentage;
+           int exceedVolumeRound = (int)exceedVolumePercentage;     
+           
             if (exceedVolumePercentage > 120 || exceedVolumePercentage < 80 ){
            rfcID.setFill(Color.YELLOW);
             ExceedVolume.setVisible(true);
             ExceedVolume.setText("Exceeds by " + exceedVolumeRound + "%");
-            RFC = false;
+            rfcStatus = false;
            }
 
            double exceedGewichtPercentage = ((double)gewichtMeet/(double)gewicht) * 100;
            int exceedGewichtRound = (int)exceedGewichtPercentage;
+           
             if (exceedGewichtPercentage > 120 || exceedGewichtPercentage < 80 ){
            rfcID.setFill(Color.YELLOW);
             ExceedGewicht.setVisible(true);
             ExceedGewicht.setText("Exceeds by " + exceedGewichtRound + "%");
-            RFC = false;
+            rfcStatus = false;
            }
-            
-           if (!RFC) {
+
+           if (!rfcStatus) {
             conn.setAutoCommit(false);
             String setRFC
                     = "UPDATE vracht "
@@ -353,6 +368,56 @@ public class CargoLijstController implements Initializable {
              setRfc.executeUpdate();
              conn.commit();
            }
+           
+           if (rfcStatus) {
+            conn.setAutoCommit(false);
+            String setRFC
+                    = "UPDATE vracht "
+                    + "SET rfc = 'ja' "
+                    + "WHERE vracht_id = ? ";
+
+            //Create prepared statment
+            
+            PreparedStatement setRfc = conn.prepareStatement(setRFC);
+
+            //set values
+            setRfc.setInt(1, vrachtID);
+           
+            //execute update
+             setRfc.executeUpdate();
+             conn.commit();
+           }
+           
+            if ("nee".equals(rfc_bericht) && "ja".equals(RFC)){
+                       System.out.println("Beste "+ klantnaam +",\n" +
+                               "Uw vracht is zojuist goedgekeurd om ingeladen te worden in het vliegtuig. Wij hebben uw vracht nogmaals gecheckt\n" +
+                               "Het gaat om de volgende vracht: \n" +
+                               "Product: "+product+"\n" +
+                               "\n" +
+                               "Uw vracht wordt zo snel mogelijk ingeladen in het vliegtuig. Bedankt voor het gebruiken van onze service\n" +
+                               "\n" +
+                               "Met vriendelijke groet,\n" +
+                               "KLM Cargo");
+                       
+            conn.setAutoCommit(false);
+            String setRFCbericht
+                    = "UPDATE vracht "
+                    + "SET rfc_bericht = 'ja' "
+                    + "WHERE vracht_id = ? ";
+
+            //Create prepared statment
+            
+            PreparedStatement setRfcBericht = conn.prepareStatement(setRFCbericht);
+
+            //set values
+            setRfcBericht.setInt(1, vrachtID);
+           
+            //execute update
+             setRfcBericht.executeUpdate();
+             conn.commit();
+                       
+           } 
+           
             
             
             Product.setText(product);
@@ -411,8 +476,6 @@ public class CargoLijstController implements Initializable {
             //execute update
              setFoH.executeUpdate();
              conn.commit();
-            //if there are no records found.
-            System.out.println(FoH);
             
            
             conn.close();
@@ -424,3 +487,5 @@ public class CargoLijstController implements Initializable {
    } 
     
 }
+
+
