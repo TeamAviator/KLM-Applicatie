@@ -88,7 +88,7 @@ public class CargoLijstController implements Initializable {
    private String exceedVolume;
    private String exceedGewicht;
    private String rfc_bericht;
-   
+   private String foh_bericht;
     /**
      * Initializes the controller class.
      * @param url
@@ -116,6 +116,7 @@ public class CargoLijstController implements Initializable {
         ExceedVolume.setText("");
         ExceedGewicht.setText("");
         rfc_bericht = "";
+        foh_bericht = "";
         
         
     }    
@@ -201,6 +202,7 @@ public class CargoLijstController implements Initializable {
         rfcID.setVisible(false);
         
         rfc_bericht = "";
+        foh_bericht = "";
         
        if(txtCargoNummer.getText() == null || txtCargoNummer.getText().trim().isEmpty()){
            vrachtID = 0;
@@ -210,7 +212,7 @@ public class CargoLijstController implements Initializable {
        try (Connection conn = Database.initDatabase()) {
             //Select the employee with the given username and password
             String selectVracht
-                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger, foh, rfc, rfc_bericht "
+                    = "SELECT vracht_id, product, gewicht, volume, gekoeld, datum_tijd, klant_klant_id, bezorger, foh, rfc, rfc_bericht, foh_bericht  "
                     + "FROM vracht "
                     + "WHERE vracht_id = ? ";
 
@@ -257,6 +259,8 @@ public class CargoLijstController implements Initializable {
                 
                 rfc_bericht = vracht.getString("rfc_bericht");
                 
+                foh_bericht = vracht.getString("foh_bericht");                
+                
             } else if( !vracht.next() ){ 
                 errorCargoID.setText("CargoNumber doesn't exist!");
                 errorCargoID.setVisible(true);
@@ -295,7 +299,6 @@ public class CargoLijstController implements Initializable {
                 beschadigd = meetgegevens.getString("beschadigd");
             } 
            
-            
             switch (FoH) {
                case "nee":
                    fohID.setFill(Color.RED);
@@ -306,7 +309,7 @@ public class CargoLijstController implements Initializable {
                    fohID.setVisible(true);
                    break;
            }
-            
+           if ("ja".equals(FoH)){
            switch (RFC) {
                case "nee":
                    rfcID.setFill(Color.RED);
@@ -325,23 +328,20 @@ public class CargoLijstController implements Initializable {
                    rfcID.setVisible(true);
                    break;
            }
-                      
 
-                   
-           
            boolean rfcStatus = true;
            double exceedVolumePercentage = ((double)volumeMeet/(double)volume) * 100;
-           int exceedVolumeRound = (int)exceedVolumePercentage;     
+           int exceedVolumeRound = (int)exceedVolumePercentage - 100;     
            
             if (exceedVolumePercentage > 120 || exceedVolumePercentage < 80 ){
            rfcID.setFill(Color.YELLOW);
             ExceedVolume.setVisible(true);
-            ExceedVolume.setText("Exceeds by " + exceedVolumeRound + "%");
+            ExceedVolume.setText("Exceeds by " + exceedVolumeRound  + "%");
             rfcStatus = false;
            }
 
            double exceedGewichtPercentage = ((double)gewichtMeet/(double)gewicht) * 100;
-           int exceedGewichtRound = (int)exceedGewichtPercentage;
+           int exceedGewichtRound = (int)exceedGewichtPercentage - 100;
            
             if (exceedGewichtPercentage > 120 || exceedGewichtPercentage < 80 ){
            rfcID.setFill(Color.YELLOW);
@@ -386,6 +386,20 @@ public class CargoLijstController implements Initializable {
             //execute update
              setRfc.executeUpdate();
              conn.commit();
+           }
+       } else {
+                   rfcID.setFill(Color.RED);
+                   rfcID.setVisible(true);
+           }
+           
+           if ("mis".equals(RFC)) {
+                       System.out.println("Beste "+ klantnaam +",\n" +
+                               "Uw vracht is zojuist gecheckt of hij RFC was. \n Helaas moeten wij uw mededelen dat de vracht niet is goedgekeurd\n" +
+                               "Het gaat om de volgende vracht: \n" +
+                              "Product: "+product+"\n" +
+                               "\n" + 
+                               "Met vriendelijke groet,\n" +
+                               "KLM Cargo");
            }
            
             if ("nee".equals(rfc_bericht) && "ja".equals(RFC)){
@@ -433,16 +447,20 @@ public class CargoLijstController implements Initializable {
             VolumeMeet.setText(String.valueOf(volumeMeet)+ " m3");
             Beschadigd.setText(beschadigd);
             
-           
+           System.out.println(foh_bericht);
+            
+            
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(CargoLijstController.class.getName()).log(Level.SEVERE, null, ex);
         }
       } else {errorCargoID.setVisible(true); errorCargoID.setText("Enter a Cargonumber please!"); }
    }
+   
+   
     @FXML
    private void foh(ActionEvent event) throws IOException {
-        if(vrachtID != 0){
+        if(vrachtID != 0 && "nee".equals(foh_bericht)) {
             System.out.println("Beste "+ klantnaam +",\n" +
                                "Uw vracht is zojuist geariveerd om "+datumTijd+" in de KLM cargo loods. Aangeleverd door "+bezorger+"\n" +
                                "De volgende gegevens zijn bij ons bekent:\n" +
@@ -463,7 +481,7 @@ public class CargoLijstController implements Initializable {
             //Select the employee with the given username and password
             String setFOH
                     = "UPDATE vracht "
-                    + "SET foh = 'ja' "
+                    + "SET foh = 'ja', foh_bericht = 'ja' "
                     + "WHERE vracht_id = ? ";
 
             //Create prepared statment
@@ -487,5 +505,4 @@ public class CargoLijstController implements Initializable {
    } 
     
 }
-
 
