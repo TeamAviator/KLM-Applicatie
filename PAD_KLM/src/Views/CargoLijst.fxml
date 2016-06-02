@@ -16,23 +16,23 @@
       <Label layoutX="264.0" layoutY="195.0" text="Volume:" />
       <Label layoutX="244.0" layoutY="292.0" text="Klantnaam:" />
       <Label layoutX="248.0" layoutY="357.0" text="Bezorger:" />
-      <Button fx:id="Zoeken" layoutX="694.0" layoutY="536.0" mnemonicParsing="false" onAction="#zoeken" prefHeight="31.0" prefWidth="92.0" text="Search" />
-      <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout">
+      <Button fx:id="Zoeken" layoutX="694.0" layoutY="536.0" mnemonicParsing="false" onAction="#zoeken" prefHeight="31.0" prefWidth="92.0" text="Search" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Profile">
+      <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Profile" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="cargo" layoutX="14.0" layoutY="195.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Cargo">
+      <Button fx:id="cargo" layoutX="14.0" layoutY="195.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="125.0" text="Cargo" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="Home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="125.0" text="Home">
+      <Button fx:id="Home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="125.0" text="Home" AnchorPane.leftAnchor="15.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -48,7 +48,7 @@
       <TextField fx:id="txtCargoNummer" layoutX="349.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="149.0" />
       <Label layoutX="262.0" layoutY="232.0" prefHeight="21.0" prefWidth="60.0" text="Gewicht:" />
       <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="125.0" text="gewicht" />
-      <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" />
+      <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="130.0" />
       <Label layoutX="275.0" layoutY="483.0" prefHeight="21.0" prefWidth="35.0" text="FoH:" />
       <Circle fx:id="fohID" fill="RED" layoutX="400.0" layoutY="493.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="rfcID" fill="RED" layoutX="400.0" layoutY="536.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
@@ -81,5 +81,8 @@
             <Font size="12.0" />
          </font>
       </Label>
+      <Button fx:id="AddMeetgegevens" layoutX="458.0" layoutY="536.0" mnemonicParsing="false" onAction="#addMeetgegevens" prefHeight="31.0" prefWidth="98.0" text="meetgegevens" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="245.0" />
+      <Label layoutX="726.0" layoutY="33.0" text="Personeel" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
+      <Label layoutX="660.0" layoutY="46.0" text="Naam" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
    </children>
 </AnchorPane>

@@ -13,11 +13,11 @@
       <Label layoutX="80.0" layoutY="121.0" text="Volume:" />
       <Label layoutX="50.0" layoutY="77.0" text="Cargonumber:" />
       <TextField fx:id="cargoNummer" layoutX="149.0" layoutY="73.0" />
-      <TextField fx:id="volume" layoutX="149.0" layoutY="117.0" />
-      <TextField fx:id="gewicht" layoutX="149.0" layoutY="157.0" />
+      <TextField fx:id="volume2" layoutX="149.0" layoutY="117.0" />
+      <TextField fx:id="gewicht2" layoutX="149.0" layoutY="157.0" />
       <TextField fx:id="aankomstTijd" layoutX="149.0" layoutY="202.0" />
       <Button fx:id="addCargo" layoutX="187.0" layoutY="298.0" mnemonicParsing="false" onAction="#addCargo" text="Add Meetingen" />
-      <TextField fx:id="beschadigd" layoutX="149.0" layoutY="244.0" />
+      <TextField fx:id="beschadigd2" layoutX="149.0" layoutY="244.0" />
       <Label layoutX="67.0" layoutY="248.0" prefHeight="17.0" prefWidth="69.0" text="beschadigd:" />
    </children>
 </AnchorPane>

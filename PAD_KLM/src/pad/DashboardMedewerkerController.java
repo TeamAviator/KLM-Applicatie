@@ -75,7 +75,7 @@ public class DashboardMedewerkerController implements Initializable {
             stage.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(MeetgegevensController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SymulatieSchermController.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }
@@ -85,13 +85,28 @@ public class DashboardMedewerkerController implements Initializable {
     
     private void logout(ActionEvent event) throws IOException {
          AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
-         Scene scene = new Scene(getLoginScreen, 600, 400);
+         Scene scene = new Scene(getLoginScreen, 800, 600);
          Stage stage = new Stage();
          stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
          stage.setTitle("KLM Cargo");
          stage.setScene(scene);
          stage.show();
+    }
+    
+    public void getSymulatieScherm() {
+        //screen2 = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/SymulatieScherm.fxml"));
+            
+            MITM.stage1.setTitle("KLM cargo");
+            MITM.stage1.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
+            MITM.stage1.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SymulatieSchermController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
     
 }

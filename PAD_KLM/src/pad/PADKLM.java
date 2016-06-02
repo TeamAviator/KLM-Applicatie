@@ -35,7 +35,7 @@ public void cargo(){
         AnchorPane login = loginController.getLoginScreen();
        
         
-        Scene scene = new Scene(login, 600, 400);
+        Scene scene = new Scene(login, 800, 600);
         
         primaryStage.setTitle("KLM Cargo");
         primaryStage.setScene(scene);

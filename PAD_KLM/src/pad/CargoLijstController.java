@@ -154,12 +154,12 @@ public class CargoLijstController implements Initializable {
         stage.setScene(scene);
         stage.show();
       }
-      
+      MITM.stage1.close();
       
       
     }
-    @FXML
-    
+   
+   @FXML 
    private void logout(ActionEvent event) throws IOException {
         AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
         Scene scene = new Scene(getLoginScreen, 600, 400);
@@ -169,6 +169,7 @@ public class CargoLijstController implements Initializable {
         stage.setTitle("KLM Cargo");
         stage.setScene(scene);
         stage.show();
+        MITM.stage1.close();
    }
    
    
@@ -422,5 +423,20 @@ public class CargoLijstController implements Initializable {
         }
    
    } 
+   MeetgegevensController meetgegevensController = new MeetgegevensController();
+   
+   @FXML
+   private void addMeetgegevens(ActionEvent event) throws IOException{
+       
+        AnchorPane getMeetGegevens  = meetgegevensController.getMeetegevensController();
+        Scene scene = new Scene(getMeetGegevens, 800, 600);
+        Stage stage = new Stage();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setTitle("KLM Cargo");
+        stage.setScene(scene);
+        stage.show();
+       
+   }
     
 }

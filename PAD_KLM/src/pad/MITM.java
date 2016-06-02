@@ -5,10 +5,9 @@
  */
 package pad;
 
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+
 
 
 
@@ -28,8 +27,10 @@ public class MITM {
     public static CargoLijstController cargoLijstController = new CargoLijstController();
     public static LoginController loginController = new LoginController();
     public static MeetgegevensController meetgegevensController = new MeetgegevensController();
+    public static SymulatieSchermController symulatieSchermController = new SymulatieSchermController();
     public static int screenSizeX = 800;
     public static int screenSizeY = 600;
+    public static Stage stage1 = new Stage();
     //public static AnchorPane screen2;
     
     

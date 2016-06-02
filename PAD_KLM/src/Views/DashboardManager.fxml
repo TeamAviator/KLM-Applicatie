@@ -26,13 +26,13 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout">
+      <Button fx:id="Logout" layoutX="14.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="125.0" text="Logout" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <TableView layoutX="161.0" layoutY="104.0" prefHeight="476.0" prefWidth="618.0" />
-      <Label layoutX="636.0" layoutY="14.0" prefHeight="17.0" prefWidth="106.0" text="Manager" />
-      <Label fx:id="txtVoornaam" layoutX="636.0" layoutY="45.0" prefHeight="21.0" prefWidth="106.0" text="naam" />
+      <TableView layoutX="161.0" layoutY="104.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+      <Label layoutX="636.0" layoutY="14.0" text="Manager" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
+      <Label fx:id="txtVoornaam" layoutX="636.0" layoutY="45.0" text="naam" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
    </children>
 </AnchorPane>

@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pad.LoginController">
     <children>
-        <TextField fx:id="txtUsername" layoutX="226.0" layoutY="175.0" prefHeight="31.0" prefWidth="150.0" promptText="Username" />
-        <Button fx:id="login" layoutX="253.0" layoutY="260.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="96.0" text="Login" />
-        <Label layoutX="237.0" layoutY="107.0" prefHeight="51.0" prefWidth="126.0" text="Please, login">
+        <TextField fx:id="txtUsername" layoutX="325.0" layoutY="279.0" prefHeight="31.0" prefWidth="150.0" promptText="Username" />
+        <Button fx:id="login" layoutX="352.0" layoutY="332.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="96.0" text="Login" />
+        <Label layoutX="337.0" layoutY="228.0" prefHeight="51.0" prefWidth="126.0" text="Please, login">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-      <Label fx:id="errorID" layoutX="238.0" layoutY="312.0" prefHeight="17.0" prefWidth="126.0" text="Username doesn't exist" textFill="RED">
+      <Label fx:id="errorID" layoutX="337.0" layoutY="381.0" prefHeight="17.0" prefWidth="126.0" text="Username doesn't exist" textFill="RED">
          <font>
             <Font size="12.0" />
          </font>

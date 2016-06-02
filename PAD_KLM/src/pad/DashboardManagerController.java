@@ -66,7 +66,7 @@ public class DashboardManagerController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
-        getMeetgegevens();
+        getSymulatieScherm();
 //        AnchorPane meetgegevens = MITM.meetgegevensController.getMeetgegevens();
 //        Scene scene2 = new Scene(meetgegevens, MITM.screenSizeX, MITM.screenSizeY);
 //        Stage stage2 = new Stage();
@@ -82,7 +82,7 @@ public class DashboardManagerController implements Initializable {
     
     private void logout(ActionEvent event) throws IOException {
         AnchorPane getLoginScreen  = MITM.loginController.getLoginScreen();
-        Scene scene = new Scene(getLoginScreen, 600, 400);
+        Scene scene = new Scene(getLoginScreen, 800, 600);
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -90,17 +90,17 @@ public class DashboardManagerController implements Initializable {
         stage.setScene(scene);
         stage.show();
    }
-    public void getMeetgegevens() {
+    public void getSymulatieScherm() {
         //screen2 = null;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/Meetgegevens.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("KLM cargo");
-            stage.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
-            stage.show();
+            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/SymulatieScherm.fxml"));
+            
+            MITM.stage1.setTitle("KLM cargo");
+            MITM.stage1.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
+            MITM.stage1.show();
         } catch (IOException ex) {
-            Logger.getLogger(MeetgegevensController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SymulatieSchermController.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }
