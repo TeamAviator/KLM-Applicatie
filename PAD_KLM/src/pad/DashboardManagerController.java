@@ -26,6 +26,7 @@ public class DashboardManagerController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @return 
      */
     
     
@@ -94,11 +95,19 @@ public class DashboardManagerController implements Initializable {
         //screen2 = null;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
+
             AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/SymulatieScherm.fxml"));
             
             MITM.stage1.setTitle("KLM cargo");
             MITM.stage1.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
             MITM.stage1.show();
+
+//            AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/Meetgegevens.fxml"));
+//            Stage stage = new Stage();
+//            stage.setTitle("KLM cargo");
+//            stage.setScene(new Scene(screen2,482 , 558));
+//            stage.show();
+
         } catch (IOException ex) {
             Logger.getLogger(SymulatieSchermController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -99,7 +99,6 @@ public class LoginController implements Initializable {
 
             //if there are no records found.
             if (medewerker.next()) {
-                System.out.println(medewerker.getString("status"));
                 bedrijfsFunctie = medewerker.getString("status");
                 MITM.naam = medewerker.getString("voornaam");
                 MITM.achternaam = medewerker.getString("achternaam");
