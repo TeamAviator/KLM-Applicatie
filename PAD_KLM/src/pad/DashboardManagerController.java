@@ -63,7 +63,7 @@ public class DashboardManagerController implements Initializable {
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        stage.setTitle("KLM Cargo");
+        stage.setTitle("KLM Cargo List");
         stage.setScene(scene);
         stage.show();
         
@@ -98,7 +98,7 @@ public class DashboardManagerController implements Initializable {
 
             AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/SymulatieScherm.fxml"));
             
-            MITM.stage1.setTitle("KLM cargo");
+            MITM.stage1.setTitle("KLM cargo Simulation");
             MITM.stage1.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
             MITM.stage1.show();
 

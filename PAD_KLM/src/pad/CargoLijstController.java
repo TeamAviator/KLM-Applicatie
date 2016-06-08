@@ -100,6 +100,7 @@ public class CargoLijstController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
         Volume.setText("");
         Gewicht.setText("");
         Product.setText("");
@@ -146,7 +147,7 @@ public class CargoLijstController implements Initializable {
             Stage stage = new Stage();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            stage.setTitle("KLM Cargo");
+            stage.setTitle("KLM Cargo Dashboard");
             stage.setScene(scene);
             stage.show();
         } else if (MITM.autoriteit == "mw") {
@@ -155,7 +156,7 @@ public class CargoLijstController implements Initializable {
             Stage stage = new Stage();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            stage.setTitle("KLM Cargo");
+            stage.setTitle("KLM Cargo Dashboard");
             stage.setScene(scene);
             stage.show();
         }
@@ -250,7 +251,7 @@ public class CargoLijstController implements Initializable {
         Stage stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        stage.setTitle("KLM Cargo");
+        stage.setTitle("KLM Cargo Measures");
         stage.setScene(scene);
         stage.show();
 

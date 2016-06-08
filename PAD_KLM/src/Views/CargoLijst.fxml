@@ -42,12 +42,12 @@
       <Label fx:id="DatumTijd" layoutX="349.0" layoutY="450.0" prefHeight="21.0" prefWidth="187.0" text="aankomst datum/tijd" />
       <Label fx:id="Gekoeld" layoutX="349.0" layoutY="403.0" prefHeight="21.0" prefWidth="187.0" text="gekoeld" />
       <Label fx:id="Bezorger" layoutX="349.0" layoutY="357.0" prefHeight="21.0" prefWidth="187.0" text="bezorger" />
-      <Label fx:id="Klantnaam" layoutX="349.0" layoutY="290.0" prefHeight="21.0" prefWidth="187.0" text="Klantnaam" />
-      <Label fx:id="Volume" layoutX="349.0" layoutY="195.0" prefHeight="21.0" prefWidth="125.0" text="Volume" />
+      <Label fx:id="Klantnaam" layoutX="349.0" layoutY="290.0" prefHeight="21.0" prefWidth="115.0" text="Klantnaam" />
+      <Label fx:id="Volume" layoutX="349.0" layoutY="195.0" prefHeight="21.0" prefWidth="115.0" text="Volume" />
       <Label fx:id="Product" layoutX="349.0" layoutY="150.0" prefHeight="21.0" prefWidth="115.0" text="Product" />
       <TextField fx:id="txtCargoNummer" layoutX="349.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="149.0" />
       <Label layoutX="266.0" layoutY="232.0" prefHeight="21.0" prefWidth="44.0" text="Weight:" />
-      <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="125.0" text="gewicht" />
+      <Label fx:id="Gewicht" layoutX="349.0" layoutY="232.0" prefHeight="21.0" prefWidth="98.0" text="gewicht" />
       <Button fx:id="Foh" layoutX="579.0" layoutY="536.0" mnemonicParsing="false" onAction="#foh" prefHeight="31.0" prefWidth="92.0" text="FoH" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="130.0" />
       <Label layoutX="277.0" layoutY="483.0" prefHeight="21.0" prefWidth="35.0" text="FoH:" />
       <Circle fx:id="fohID" fill="RED" layoutX="400.0" layoutY="493.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
@@ -58,30 +58,30 @@
             <Font size="12.0" />
          </font>
       </Label>
-      <Label layoutX="536.0" layoutY="135.0" prefHeight="31.0" prefWidth="187.0" text="KLM Loods">
+      <Label layoutX="501.0" layoutY="145.0" prefHeight="31.0" prefWidth="187.0" text="KLM Cargo">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="480.0" layoutY="171.0" text="Volume:" />
-      <Label layoutX="484.0" layoutY="206.0" prefHeight="21.0" prefWidth="44.0" text="Weight:" />
-      <Label fx:id="VolumeMeet" layoutX="536.0" layoutY="169.0" prefHeight="21.0" prefWidth="115.0" text="Volume" />
-      <Label fx:id="GewichtMeet" layoutX="540.0" layoutY="206.0" prefHeight="21.0" prefWidth="115.0" text="Gewicht" />
-      <Label layoutX="472.0" layoutY="243.0" prefHeight="21.0" prefWidth="60.0" text="Damaged:" />
-      <Label fx:id="Beschadigd" layoutX="541.0" layoutY="243.0" prefHeight="21.0" prefWidth="76.0" text="Beschadigd" />
-      <Label layoutX="472.0" layoutY="274.0" prefHeight="21.0" prefWidth="60.0" text="Arrived at:" />
-      <Label fx:id="DatumTijdMeet" layoutX="541.0" layoutY="274.0" prefHeight="21.0" prefWidth="187.0" text="aankomst" />
-      <Label fx:id="ExceedVolume" layoutX="642.0" layoutY="171.0" prefHeight="17.0" prefWidth="137.0" text="Exceeds by ... %" textFill="RED">
+      <Label layoutX="477.0" layoutY="197.0" text="Volume:" />
+      <Label layoutX="481.0" layoutY="232.0" prefHeight="21.0" prefWidth="44.0" text="Weight:" />
+      <Label fx:id="VolumeMeet" layoutX="533.0" layoutY="195.0" prefHeight="21.0" prefWidth="115.0" text="Volume" />
+      <Label fx:id="GewichtMeet" layoutX="537.0" layoutY="232.0" prefHeight="21.0" prefWidth="115.0" text="Gewicht" />
+      <Label layoutX="469.0" layoutY="269.0" prefHeight="21.0" prefWidth="60.0" text="Damaged:" />
+      <Label fx:id="Beschadigd" layoutX="538.0" layoutY="269.0" prefHeight="21.0" prefWidth="76.0" text="Beschadigd" />
+      <Label layoutX="469.0" layoutY="300.0" prefHeight="21.0" prefWidth="60.0" text="Arrived at:" />
+      <Label fx:id="DatumTijdMeet" layoutX="538.0" layoutY="300.0" prefHeight="21.0" prefWidth="187.0" text="aankomst" />
+      <Label fx:id="ExceedVolume" layoutX="639.0" layoutY="197.0" prefHeight="17.0" prefWidth="137.0" text="Exceeds by ... %" textFill="RED">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label fx:id="ExceedGewicht" layoutX="645.0" layoutY="208.0" prefHeight="17.0" prefWidth="137.0" text="Exceeds by ... %" textFill="RED">
+      <Label fx:id="ExceedGewicht" layoutX="642.0" layoutY="234.0" prefHeight="17.0" prefWidth="137.0" text="Exceeds by ... %" textFill="RED">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Button fx:id="AddMeetgegevens" layoutX="458.0" layoutY="536.0" mnemonicParsing="false" onAction="#addMeetgegevens" prefHeight="31.0" prefWidth="98.0" text="Measures" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="245.0" />
+      <Button fx:id="AddMeetgegevens" layoutX="458.0" layoutY="536.0" mnemonicParsing="false" onAction="#addMeetgegevens" prefHeight="31.0" prefWidth="98.0" text="Add Measures" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="245.0" />
       <Label layoutX="726.0" layoutY="33.0" text="Personeel" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
       <Label layoutX="660.0" layoutY="46.0" text="Naam" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
    </children>

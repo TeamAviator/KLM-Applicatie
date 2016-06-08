@@ -100,7 +100,7 @@ public class DashboardMedewerkerController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             AnchorPane screen2 = FXMLLoader.load(getClass().getResource("/Views/SymulatieScherm.fxml"));
             
-            MITM.stage1.setTitle("KLM cargo");
+            MITM.stage1.setTitle("KLM cargo Simulation");
             MITM.stage1.setScene(new Scene(screen2, MITM.screenSizeX, MITM.screenSizeY));
             MITM.stage1.show();
         } catch (IOException ex) {

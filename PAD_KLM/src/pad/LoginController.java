@@ -1,5 +1,6 @@
 package pad;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -20,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -45,6 +48,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         errorID.setVisible(false);
+        
     }
     
     
@@ -123,7 +127,7 @@ public class LoginController implements Initializable {
                 Stage stage = new Stage();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                stage.setTitle("KLM Cargo");
+                stage.setTitle("KLM Cargo Dashboard");
                 stage.setScene(scene);
                 stage.show();
                 
@@ -138,7 +142,7 @@ public class LoginController implements Initializable {
                 Stage stage = new Stage();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                stage.setTitle("KLM Cargo");
+                stage.setTitle("KLM Cargo Dashboard");
                 stage.setScene(scene);
                 stage.show();
             
