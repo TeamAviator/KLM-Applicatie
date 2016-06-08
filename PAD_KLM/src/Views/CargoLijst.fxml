@@ -82,7 +82,5 @@
          </font>
       </Label>
       <Button fx:id="AddMeetgegevens" layoutX="458.0" layoutY="536.0" mnemonicParsing="false" onAction="#addMeetgegevens" prefHeight="31.0" prefWidth="98.0" text="Add Measures" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="245.0" />
-      <Label layoutX="726.0" layoutY="33.0" text="Personeel" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
-      <Label layoutX="660.0" layoutY="46.0" text="Naam" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
    </children>
 </AnchorPane>
