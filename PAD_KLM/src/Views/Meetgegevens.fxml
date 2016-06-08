@@ -31,16 +31,17 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Label layoutX="284.0" layoutY="284.0" prefHeight="17.0" prefWidth="69.0" text="beschadigd:" />
-      <TextField fx:id="beschadigd" layoutX="366.0" layoutY="280.0" />
+      <Label layoutX="291.0" layoutY="284.0" prefHeight="17.0" prefWidth="56.0" text="Damaged:" />
+      <TextField fx:id="beschadigd" layoutX="366.0" layoutY="280.0" promptText="yes/no" />
       <Button fx:id="addCargo" layoutX="404.0" layoutY="334.0" mnemonicParsing="false" onAction="#addCargo" text="Add Meetingen" />
-      <TextField fx:id="aankomstTijd" layoutX="366.0" layoutY="238.0" />
-      <TextField fx:id="gewicht" layoutX="366.0" layoutY="193.0" />
-      <TextField fx:id="volume" layoutX="366.0" layoutY="153.0" />
+      <TextField fx:id="aankomstTijd" layoutX="366.0" layoutY="238.0" promptText="(yyyy-mm-dd hh:mm:ss)" />
+      <TextField fx:id="gewicht" layoutX="366.0" layoutY="193.0" promptText="kg" />
+      <TextField fx:id="volume" layoutX="366.0" layoutY="153.0" promptText="m³" />
       <TextField fx:id="cargoNummer" layoutX="366.0" layoutY="109.0" />
-      <Label layoutX="267.0" layoutY="113.0" text="Cargonumber:" />
+      <Label layoutX="296.0" layoutY="113.0" text="Barcode:" />
       <Label layoutX="297.0" layoutY="157.0" text="Volume:" />
-      <Label layoutX="232.0" layoutY="240.0" prefHeight="21.0" prefWidth="130.0" text="aankomst Datum/tijd" />
-      <Label layoutX="299.0" layoutY="195.0" prefHeight="21.0" prefWidth="50.0" text="Gewicht:" />
+      <Label layoutX="293.0" layoutY="240.0" prefHeight="21.0" prefWidth="56.0" text="Arrived at:" />
+      <Label layoutX="299.0" layoutY="195.0" prefHeight="21.0" prefWidth="50.0" text="Weight:" />
+      <Label fx:id="Added" layoutX="400.0" layoutY="383.0" prefHeight="17.0" prefWidth="107.0" text="Succussfully added!" textFill="#03b500" />
    </children>
 </AnchorPane>

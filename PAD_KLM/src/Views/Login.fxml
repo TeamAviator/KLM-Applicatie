@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -13,9 +14,9 @@
     <children>
         <TextField fx:id="txtUsername" layoutX="325.0" layoutY="279.0" prefHeight="31.0" prefWidth="150.0" promptText="Username" />
         <Button fx:id="login" layoutX="352.0" layoutY="332.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0" prefWidth="96.0" text="Login" />
-        <Label layoutX="337.0" layoutY="228.0" prefHeight="51.0" prefWidth="126.0" text="Please, login">
+        <Label layoutX="285.0" layoutY="182.0" prefHeight="51.0" prefWidth="264.0" text="Login into uCargo">
             <font>
-                <Font size="20.0" />
+                <Font size="31.0" />
             </font>
         </Label>
       <Label fx:id="errorID" layoutX="337.0" layoutY="381.0" prefHeight="17.0" prefWidth="126.0" text="Username doesn't exist" textFill="RED">
@@ -23,5 +24,20 @@
             <Font size="12.0" />
          </font>
       </Label>
+      <ImageView fx:id="logo" fitHeight="173.0" fitWidth="367.0" layoutX="217.0" layoutY="35.0" nodeOrientation="INHERIT" smooth="false" AnchorPane.bottomAnchor="392.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="35.0">
+         <image>
+            <Image url="@../../image/LogoTeam.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="294.0" layoutY="226.0" prefHeight="31.0" prefWidth="227.0" text="Your favorite cargo application">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="179.0" fitWidth="657.0" layoutX="-239.0" layoutY="239.0" rotate="-90.0">
+         <image>
+            <Image url="@../../image/Light-Blue-Lines-Slide-Templates.jpg" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
